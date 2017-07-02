@@ -46,7 +46,9 @@ test_generator = test_datagen.flow_from_directory(
 
 classifier.fit_generator(
     train_generator,
-    steps_per_epoch=8000,
+    steps_per_epoch=4000/32,
     epochs=25,
     validation_data=test_generator,
-    validation_steps=200)
+    validation_steps=1000/32,
+    workers=12,
+    max_q_size=100)
